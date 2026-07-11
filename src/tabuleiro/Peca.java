@@ -2,12 +2,12 @@ package tabuleiro;
 
 public class Peca {
     public Posicao posicao;
-    protected Cor cor;
+    public Cor cor;
     public int qteMovimentos;
     public Tabuleiro tab;
 
-    public Peca(Posicao posicao, Cor cor, Tabuleiro tab) {
-        this.posicao = posicao;
+    public Peca(Tabuleiro tab, Cor cor ) {
+        this.posicao = null;
         this.cor = cor;
         this.tab = tab;
         this.qteMovimentos = 0;
@@ -25,7 +25,7 @@ public class Peca {
         return cor;
     }
 
-    public void setCor(Cor cor) {
+    protected void setCor(Cor cor) {
         this.cor = cor;
     }
 
