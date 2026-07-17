@@ -17,7 +17,7 @@ public class Posicao {
         this.coluna = coluna;
     }
 
-    public String ToString(){
+    public String toString(){
         return linha + ", " + coluna;
     }
 
