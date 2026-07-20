@@ -24,7 +24,7 @@ public class Tela {
 
     public static void imprimirPeca(Peca peca){
         if(peca.cor == Cor.Branca){
-            System.out.println(peca);
+            System.out.print(peca);
         }else {
             System.out.print(amarelo + peca + padrao );
 
