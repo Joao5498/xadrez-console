@@ -1,29 +1,50 @@
-import tabuleiro.Cor;
-import tabuleiro.Posicao;
-import tabuleiro.Tabuleiro;
+import tabuleiro.*;
 import java.util.Scanner;
-import tabuleiro.TabuleiroException;
 import xadrez.*;
 
 public static void main(String[] args) throws TabuleiroException {
     Scanner leitor = new Scanner(System.in);
     try {
-        PosicaoXadrez pos = new PosicaoXadrez('a', 7);
-        Tabuleiro tab = new Tabuleiro(8 ,8);
+        PartidaDeXadrez partida = new PartidaDeXadrez();
 
-        tab.colocarPeca(new Rei(tab, Cor.Preta), new Posicao(4,0));
-        tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(5,0));
-        tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(6,0));
+        while (!partida.terminada) {
+            Tela.imprimirTabuleiro(partida.tab);
+            System.out.printf("\nOrigem:");
+            Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+            System.out.printf("\nDestino:");
+            Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
+            System.out.println("");
 
-        tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(1,0));
-        tab.colocarPeca(new Torre(tab, Cor.Branca), new Posicao(2,0));
-        tab.colocarPeca(new Torre(tab, Cor.Branca), new Posicao(3,0));
+            partida.executaMovimento(origem, destino);
 
-        Tela.imprimirTabuleiro(tab);
+        }
 
-    }catch (TabuleiroException e){
+
+
+    } catch (TabuleiroException e) {
         System.out.println(e);
     }
 
     leitor.next();
+}
+
+
+public static void limpar() {
+    try {
+        String sistema = System.getProperty("os.name");
+
+        if (sistema.contains("Windows")) {
+            new ProcessBuilder("cmd", "/c", "cls")
+                    .inheritIO()
+                    .start()
+                    .waitFor();
+        } else {
+            new ProcessBuilder("clear")
+                    .inheritIO()
+                    .start()
+                    .waitFor();
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
 }

@@ -44,4 +44,8 @@ public class Peca {
     public void setTab(Tabuleiro tab) {
         this.tab = tab;
     }
+
+    public void incrementaMovimentos(){
+        qteMovimentos++;
+    }
 }

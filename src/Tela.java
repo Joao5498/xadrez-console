@@ -1,4 +1,6 @@
 import tabuleiro.*;
+import java.util.Scanner;
+import xadrez.PosicaoXadrez;
 
 public class Tela {
     private static final String amarelo = "\u001B[33m";
@@ -20,6 +22,15 @@ public class Tela {
             System.out.println("");
         }
         System.out.print("  a b c d e f g h");
+    }
+
+    public static PosicaoXadrez lerPosicaoXadrez(){
+        Scanner scanner = new Scanner(System.in);
+        String s = scanner.nextLine();
+        char coluna = s.charAt(0);
+        int linha = Integer.parseInt(String.valueOf(s.charAt(1)));
+
+        return new PosicaoXadrez(coluna, linha);
     }
 
     public static void imprimirPeca(Peca peca){
